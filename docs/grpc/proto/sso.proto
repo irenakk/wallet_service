@@ -1,0 +1,21 @@
+ syntax = "proto3";
+
+package auth;
+
+ // Указываем go_package
+ option go_package = "./gen";
+
+ // Сообщение для валидации токена
+ message ValidateRequest {
+   string token = 1; // Токен для проверки
+ }
+
+ // Сообщение для ответа на валидацию токена
+ message ValidateResponse {
+   string login = 1; // Логин пользователя, если токен валиден
+ }
+
+ // Определение сервиса аутентификации
+ service AuthService {
+   rpc Validate(ValidateRequest) returns (ValidateResponse);
+ }
